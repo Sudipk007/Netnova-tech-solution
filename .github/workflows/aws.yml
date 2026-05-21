@@ -12,7 +12,7 @@ jobs:
                 uses: action/checkout@v4
 
               - name: Deploy to ec2
-                steps: appleboy/ssh-action@master
+                uses: appleboy/ssh-action@master
                 with: 
                    host: ${{secrets.EC2HOST}}
                    username: ${{secrets.USERNAME}}

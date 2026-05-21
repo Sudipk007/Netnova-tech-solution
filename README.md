@@ -1,7 +1,8 @@
-# About --
-this is webpage for the tech company called Netnova tech company in this project i will be using claude for UI node js for backend github action for CI/CD and aws for deployment 
+# About 
 
-# solution -- 
+This is webpage for the tech company called Netnova tech company in this project i will be using claude for UI node js for backend github action for CI/CD and aws for deployment 
+
+# solution 
 
   1.the UI design is created with the help of claude ai which showcase the prompt engineering
   

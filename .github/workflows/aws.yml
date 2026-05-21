@@ -1,0 +1,34 @@
+name: Deploy to ec2
+
+on:
+  push:
+    branches:
+        -main
+jobs:
+    deploy:
+          runs-on: ubuntu-latest
+          steps: 
+              - name: checkout code
+                uses: action/checkout@v4
+
+              - name: Deploy to ec2
+                steps: appleboy/ssh-action@master
+                with: 
+                   host: ${{secrets.EC2HOST}}
+                   username: ${{secrets.USERNAME}}
+                   key: ${{secrets.KEY}}
+
+                   script: 
+                       cd ${{secrets.PATH}}
+                       #git pull
+
+                       git pull origin main
+                       git pull --rebase origin main
+
+                       cd ~/Netnova-tech-solution/backend
+                       pm2 restart server.js || pm2 start server.js
+
+                       cd ~/Netnova-tech-solution/netnova
+                       npm run build
+              
+

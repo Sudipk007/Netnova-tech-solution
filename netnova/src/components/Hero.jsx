@@ -31,7 +31,7 @@ export default function Hero() {
             className="font-display font-black leading-tight mb-6"
             style={{ fontSize: 'clamp(2.8rem,7vw,6rem)', letterSpacing: '-0.03em' }}
           >
-            Innovating<br />
+            Creating<br />
             <span className="text-gradient">The Future</span><br />
             <span style={{ color: 'var(--text-1)' }}>Together</span>
           </h1>

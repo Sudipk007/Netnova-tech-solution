@@ -18,25 +18,17 @@ jobs:
                  key: ${{secrets.KEY}}
 
                  script: |
-                    # 1. Load Node 22 environment into this SSH session
-                    export NVM_DIR="$HOME/.nvm"
-                    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-        
-                    # 2. Update Code
-                    cd ~/Netnova-tech-solution
-                    git reset --hard HEAD
+                    
+                    
+                    cd ${{secrets.PATH}}
                     git pull origin main
         
-                    # 3. Re-install & Re-start Backend
+                    
                     cd ~/Netnova-tech-solution/backend
-                    rm -rf node_modules package-lock.json # Wipes the old Node 18 build
-                    npm install --production
                     pm2 restart server.js || pm2 start server.js
         
                     # 4. Re-install & Re-build Frontend
-                    cd ~/Netnova-tech-solution/netnova
-                    rm -rf node_modules package-lock.json # Wipes the conflicting build
-                    npm install --legacy-peer-deps        # Forces past the Vite version conflict
+                    cd ~/Netnova-tech-solution/netnova      # Forces past the Vite version conflict
                     npm run build
                       
 
